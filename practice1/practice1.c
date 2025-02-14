@@ -7,7 +7,7 @@ void task1() {
 	int weight;
 	printf("Enter weight: ");
 	scanf("%d", &weight);
-	if (weight < 60 && weight > 90) {
+	if (weight < 60 && weight > 90) { // Уверен? Тестируй решение перед отправкой =)
 		printf("You can't qualify.");
 	} else {
 		printf("You can qualify.");
@@ -30,7 +30,7 @@ void task3() {
 	char detail;
 	printf("Enter the detail marking: ");
 	scanf("%c", &detail);
-	if (detail < 'A' || detail > 'Z') {
+	if (detail < 'A' || detail > 'Z') { // Уверен? Тестируй решение перед отправкой =)
 		printf("Marking is invalid");
 	} else {
 		printf("Marking is valid");
@@ -45,7 +45,7 @@ void task4() {
 
 	time_t t = time(NULL);
 	struct tm *now = localtime(&t);
-
+	// Сложно! Условие было простым
 	int cur_date = (now->tm_year + 1900) * 10000 + now->tm_mon * 100 + now->tm_mday * 10;
 	
 	if (cur_date < date) {
@@ -122,7 +122,7 @@ void task8() {
 	int n;
 	printf("Enter cargo weight (kg): ");
 	scanf("%d", &n);
-	
+	// AI ?!
 	if (n == 0) {
 		printf("Cargo can't be 0 kg");
 		return;
