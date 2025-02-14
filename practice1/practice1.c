@@ -7,7 +7,8 @@ void task1() {
 	int weight;
 	printf("Enter weight: ");
 	scanf("%d", &weight);
-	if (weight < 60 && weight > 90) { // Уверен? Тестируй решение перед отправкой =)
+	// Да, знаю. Я просто сначала написал правильно, а потом когда снова код проверял поменял || на && зачем-то и не перепроверил(
+	if (weight < 60 || weight > 90) { // Уверен? Тестируй решение перед отправкой =)
 		printf("You can't qualify.");
 	} else {
 		printf("You can qualify.");
@@ -30,6 +31,7 @@ void task3() {
 	char detail;
 	printf("Enter the detail marking: ");
 	scanf("%c", &detail);
+	// Возможно не понял условие, но вроде все работает, для символов от A до Z (заглавных, как в условии) выводит valid
 	if (detail < 'A' || detail > 'Z') { // Уверен? Тестируй решение перед отправкой =)
 		printf("Marking is invalid");
 	} else {
@@ -45,7 +47,7 @@ void task4() {
 
 	time_t t = time(NULL);
 	struct tm *now = localtime(&t);
-	// Сложно! Условие было простым
+	// Сложно! Условие было простым -------- Решил сделать прямо по текущей дате, поработать с библиотекой даты, вроде ведь не ошибка ??
 	int cur_date = (now->tm_year + 1900) * 10000 + now->tm_mon * 100 + now->tm_mday * 10;
 	
 	if (cur_date < date) {
@@ -77,31 +79,28 @@ void task5() {
 
 
 void task6() {
-	int amount, fourMan = 0, threeMan = 0, twoMan = 0;
+	int amount;
 	printf("Enter amount of astronauts: ");
 	scanf("%d", &amount);
 
-	if (amount == 1) {
+	if (amount <= 1) {
 		printf("Too few people to form group");
 		return;
 	}
 
-	while (amount >= 4) {
-		amount -= 4;
-		fourMan += 1;
-	}
+	int m2, all = 0;
 
-	while (amount >= 3) {
-		amount -= 3;
-		threeMan += 1;
+	for (int m4 = 0; m4 <= amount / 4; m4++) {
+		for (int m3 = 0; m3 <= amount - 4 * m4; m3++){
+			m2 = amount - m4 * 4 - m3 * 3;
+			if (m2 >= 0 && m2 % 2 == 0) {
+				all += 1;
+				m2 = m2 / 2;
+				printf("Variant %d: %d four-man modules, %d three-man modules and %d two-man modules\n", all, m4, m3, m2);
+			}
+		}
 	}
-
-	while (amount >= 2) {
-		amount -= 2;
-		twoMan += 1;
-	}
-
-	printf("To split people we will need %d modules: %d four-man modules, %d three-man and %d two-man", (twoMan + fourMan + threeMan), fourMan, threeMan, twoMan);
+	printf("Total: %d modules", all);
 }
 
 
@@ -122,7 +121,7 @@ void task8() {
 	int n;
 	printf("Enter cargo weight (kg): ");
 	scanf("%d", &n);
-	// AI ?!
+	// AI ?! - Никак нет! Все решал сам. Возможно вас смутил английский язык, но просто пока с проблемами с кодировкой не могу справиться, поэтому в этой практике на английском
 	if (n == 0) {
 		printf("Cargo can't be 0 kg");
 		return;
