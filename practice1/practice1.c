@@ -7,7 +7,8 @@ void task1() {
 	int weight;
 	printf("Enter weight: ");
 	scanf("%d", &weight);
-	if (weight < 60 || weight > 90) {
+	// Да, знаю. Я просто сначала написал правильно, а потом когда снова код проверял поменял || на && зачем-то и не перепроверил(
+	if (weight < 60 || weight > 90) { // Уверен? Тестируй решение перед отправкой =)
 		printf("You can't qualify.");
 	} else {
 		printf("You can qualify.");
@@ -30,7 +31,8 @@ void task3() {
 	char detail;
 	printf("Enter the detail marking: ");
 	scanf("%c", &detail);
-	if (detail < 'A' || detail > 'Z') {
+	// Возможно не понял условие, но вроде все работает, для символов от A до Z (заглавных, как в условии) выводит valid
+	if (detail < 'A' || detail > 'Z') { // Уверен? Тестируй решение перед отправкой =)
 		printf("Marking is invalid");
 	} else {
 		printf("Marking is valid");
@@ -45,7 +47,7 @@ void task4() {
 
 	time_t t = time(NULL);
 	struct tm *now = localtime(&t);
-
+	// Сложно! Условие было простым -------- Решил сделать прямо по текущей дате, поработать с библиотекой даты, вроде ведь не ошибка ??
 	int cur_date = (now->tm_year + 1900) * 10000 + now->tm_mon * 100 + now->tm_mday * 10;
 	
 	if (cur_date < date) {
@@ -119,7 +121,7 @@ void task8() {
 	int n;
 	printf("Enter cargo weight (kg): ");
 	scanf("%d", &n);
-	
+	// AI ?! - Никак нет! Все решал сам. Возможно вас смутил английский язык, но просто пока с проблемами с кодировкой не могу справиться, поэтому в этой практике на английском
 	if (n == 0) {
 		printf("Cargo can't be 0 kg");
 		return;
