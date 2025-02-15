@@ -7,7 +7,7 @@ void task1() {
 	int weight;
 	printf("Enter weight: ");
 	scanf("%d", &weight);
-	if (weight < 60 && weight > 90) {
+	if (weight < 60 || weight > 90) {
 		printf("You can't qualify.");
 	} else {
 		printf("You can qualify.");
@@ -77,31 +77,28 @@ void task5() {
 
 
 void task6() {
-	int amount, fourMan = 0, threeMan = 0, twoMan = 0;
+	int amount;
 	printf("Enter amount of astronauts: ");
 	scanf("%d", &amount);
 
-	if (amount == 1) {
+	if (amount <= 1) {
 		printf("Too few people to form group");
 		return;
 	}
 
-	while (amount >= 4) {
-		amount -= 4;
-		fourMan += 1;
-	}
+	int m2, all = 0;
 
-	while (amount >= 3) {
-		amount -= 3;
-		threeMan += 1;
+	for (int m4 = 0; m4 <= amount / 4; m4++) {
+		for (int m3 = 0; m3 <= amount - 4 * m4; m3++){
+			m2 = amount - m4 * 4 - m3 * 3;
+			if (m2 >= 0 && m2 % 2 == 0) {
+				all += 1;
+				m2 = m2 / 2;
+				printf("Variant %d: %d four-man modules, %d three-man modules and %d two-man modules\n", all, m4, m3, m2);
+			}
+		}
 	}
-
-	while (amount >= 2) {
-		amount -= 2;
-		twoMan += 1;
-	}
-
-	printf("To split people we will need %d modules: %d four-man modules, %d three-man and %d two-man", (twoMan + fourMan + threeMan), fourMan, threeMan, twoMan);
+	printf("Total: %d modules", all);
 }
 
 
@@ -221,7 +218,7 @@ void main() {
 	// task3();
 	// task4();
 	// task5();
-	// task6();
+	task6();
 	// task7();
 	// task8();
 	// task9();
@@ -230,6 +227,6 @@ void main() {
 	// task12();
 	// task13();
 	// task14();
-	task15();
+	// task15();
 }
 
