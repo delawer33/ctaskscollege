@@ -66,7 +66,7 @@ int main() {
         {"replace_vowels", replace_vowels},
         {"invert_register", invert_register}
     };
-
+    
     printf("Введите строку: ");
     fgets(str, 128, stdin);
     printf("Введите название операции (или введите несколько через пробел): ");
@@ -90,7 +90,6 @@ int main() {
     int f = 0;
     for (int i = 0; i < k + 1; i++) {
         for (int j = 0; j < sizeof(commands) / sizeof(commands[0]); j++) {
-            // printf("%s %s", commands[i].name, commands_from_user[i]);
             if (strcmp(commands[j].name, commands_from_user[i]) == 0) {
                 res = commands[j].func(res);
                 f = 1;
@@ -102,6 +101,6 @@ int main() {
         f = 0;
     }
     
-    printf("%s", res);
+    printf("Результат: %s", res);
     return 0;
 }
